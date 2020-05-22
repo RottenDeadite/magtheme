@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="footer">
+            <container name="newsletter-wrapper" before="footer-lower" htmlClass="newsletter-wrapper" htmlTag="div">
+                <container name="newsletter-text" before="form.subscribe" htmlClass="newsletter-text" htmlTag="div">
+                    <block class="Magento\Cms\Block\Block" name="footer-newslettertext" before="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">newslettertext</argument>
+                        </arguments>
+                    </block>
+                </container>
+                <container name="newsletter-social" after="form.subscribe" htmlClass="newsletter-form-wrapper" htmlTag="div">
+                    <block class="Magento\Cms\Block\Block" name="footer-social" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">newslettersocial</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        </referenceBlock>
+        <move element="form.subscribe" destination="newsletter-wrapper" before="newsletter-social" />
+    </body>
+</page>

@@ -1,0 +1,21 @@
+<div class="magento__dropdown-widget searchicon-wrapper">
+    <button class="action toggle search-icon">
+        <span>SEARCH ICON</span>
+    </button>
+    <div class="searchicon-content"
+    aria-haspopup="true"
+    data-mage-init='{
+    "dropdownDialog":
+        {
+            "appendTo": ".searchicon-wrapper",
+            "triggerTarget": ".search-icon",
+            "closeOnMouseLeave": false,
+            "closeOnEscape": true,
+            "triggerClass": "active",
+            "parentClass": "active",
+            "buttons": []
+        }
+    }'>
+        <?= $block->getChildHtml() ?>
+    </div>
+</div>

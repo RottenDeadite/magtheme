@@ -1,0 +1,37 @@
+<?php
+/**
+ * Copyright © EYStudios. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Read more about this particular jQueryUI function at:
+ * https://devdocs.magento.com/guides/v2.3/javascript-dev-guide/widgets/widget_dropdown.html
+ */
+
+$blockName = $block->getDataByKey('block-name');
+?>
+<div class="magento__dropdown-widget <?=$blockName;?>-wrapper">
+    <button class="action toggle <?=$blockName;?>-icon">
+        <span>ICON</span>
+    </button>
+    <div class="<?=$blockName;?>-content"
+    aria-haspopup="true"
+    data-mage-init='{
+    "dropdownDialog":
+        {
+            "appendTo": ".<?=$blockName;?>-wrapper",
+            "triggerTarget": ".<?=$blockName;?>-icon",
+            "closeOnMouseLeave": false,
+            "closeOnEscape": true,
+            "triggerClass": "active",
+            "parentClass": "active",
+            "buttons": []
+        }
+    }'>
+        <?= $block->getChildHtml() ?>
+    </div>
+</div>
+

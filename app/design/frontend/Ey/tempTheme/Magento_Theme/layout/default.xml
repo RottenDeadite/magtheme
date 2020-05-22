@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700" rel="stylesheet" src_type="url" type="text/css" />
+    </head>
+    <body>
+        <referenceContainer name="header.container">
+            <container name="header.banner" htmlClass="headerbanner" htmlTag="div" after="header-wrapper">
+                <block class="Magento\Cms\Block\Block" name="headerbannercontent">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">headerbanner</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="header-wrapper">
+            <container name="top.panel.wrapper" htmlClass="toppanel" htmlTag="div" before="logo">
+                <block class="Magento\Cms\Block\Block" name="contactinformation">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">contactinformation</argument>
+                    </arguments>
+                </block>
+            </container>
+            <container name="not-logo" htmlClass="notlogo" htmlTag="div" after="logo">
+                <container name="bottom.panel.wrapper" htmlClass="bottompanel" htmlTag="div" after="-">
+                    <container name="user.login.wrapper" htmlClass="userloginwrapper" htmlTag="div" before="minicart">
+                        <block class="Magento\Framework\View\Element\Template" name="userloginicon" template="Ey_UserMenu::dropdown-wrapper.phtml">
+                            <arguments>
+                                <argument name="block-name" xsi:type="string">userloginicon</argument>
+                            </arguments>
+                        </block>
+                    </container>
+                </container>
+            </container>
+        </referenceContainer>
+        <referenceBlock name="navigation.sections">
+            <block class="Magento\Framework\View\Element\Template" name="navigation-footer-wrapper" group="navigation-sections" template="Magento_Theme::html/footer-wrapper.phtml">
+                <block class="Magento\Framework\View\Element\Template" name="nav-authorization-wrapper" template="Magento_Theme::html/footer-authorization-wrapper.phtml">
+                    <block class="Magento\Customer\Block\Account\AuthorizationLink" name="nav-authorization-link"
+                       template="Magento_Customer::account/link/authorization.phtml"/>
+                </block>
+                <block class="Magento\Cms\Block\Block" name="nav-contactinformation" after="nav-authorization-link">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">contactinformation</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Cms\Block\Block" name="nav-headerbannercontent" after="nav-contactinformation">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">headerbanner</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="footer-container">
+            <container name="footer-lower" htmlTag="div" htmlClass="footer-lower" after="newsletter-wrapper">
+                <container name="footer-lower-top" htmlTag="div" htmlClass="footer-lower-top" before="-">
+                    <block class="Magento\Theme\Block\Html\Header\Logo" name="footer-logo">
+                        <arguments>
+                            <argument name="logo_img_width" xsi:type="number">189</argument>
+                            <argument name="logo_img_height" xsi:type="number">64</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Cms\Block\Block" name="footer-contact-one" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer-contact</argument>
+                        </arguments>
+                    </block>
+                </container>
+                <container name="footer-links" htmlTag="div" htmlClass="footer-links" after="footer">
+                    <block class="Magento\Cms\Block\Block" name="footer-links-cms" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer-columns</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Cms\Block\Block" name="footer-contact-two" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer-contact</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+
+        </referenceContainer>
+        <move element="navigation.sections" destination="bottom.panel.wrapper" before="-"/>
+        <move element="minicart" destination="bottom.panel.wrapper" before="user.login.wrapper"/>
+        <move element="searchicon" destination="bottom.panel.wrapper" after="userloginicon"/>
+        <move element="top.links" destination="userloginicon" after="-"/>
+        <move element="header" destination="top.links" before="my-account-link"/>
+        <referenceBlock name="header.panel.wrapper" remove="true"/>
+        <referenceBlock name="footer_links" remove="true"/>
+    </body>
+</page>
